@@ -25,10 +25,11 @@ module Weather
         atmosphere = weather_data['atmosphere']
         today = weather_data['item']['condition']
 
-        today_data = { date: today['date'],
+        today_data = { date: DateTime.parse(today['date']).strftime('%e %B %Y, %H:%M'),
                        temperature: today['temp'] + + '°' + units['temperature'],
                        wind: wind['speed'] + ' ' + units['speed'],
                        humidity: atmosphere['humidity'] + '%',
+                       text: today['text'],
                        location: location['city'] + ', ' + location['country']
                      }
         forecast_data = weather_data['item']['forecast'].drop(1).map do |f|

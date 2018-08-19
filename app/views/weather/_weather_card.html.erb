@@ -1,17 +1,23 @@
 
 <%- if type == 'today' %>
   <div class='weather-card <%= type %>'>
-    <p> Placeholder -- Data goes here </p>
-    <% data.each do |d| %>
-      <%= d %>
-    <% end %>   
+    <div class="location"> <%= data[:location] %> </div>
+    <div class="time"> <%= data[:date] %> </div>
+    <div class="text"> <%= data[:text] %> </div>
+    <div class="temperature"> <%= data[:temperature] %> </div>
+    <div class="other-conditions"> 
+      <div> Wind: <%= data[:wind] %> </div>
+      <div> Humidity: <%= data[:humidity] %> </div>
+    </div>
   </div>
 <% end -%>
-<%- if type == 'forecast' %>
-  <div class='weather-card  <%= type %>'>
-    <p> Placeholder -- Data goes here  2</p>
+<%- if type == 'forecast' %>  
     <% data.each do |d| %>
-      <%= d %>
-    <% end %> 
-  </div>
+      <div class='weather-card  <%= type %>'>
+        <div style="font-weight: 100; color: #bbb"> <%= d['day'] %> </div>
+        <div> <%= d['text'] %> </div>
+        <div> <%= d['high'] %> </div>
+        <div> <%= d['low'] %> </div>
+      </div>
+    <% end %>
 <% end -%>
