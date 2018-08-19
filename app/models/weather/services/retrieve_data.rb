@@ -1,13 +1,11 @@
 module Weather
   module Services
     class RetrieveData
-
       def initialize(location)
         @location = location
       end
 
       def call
-
         uri = URI(@location.url)
 
         req = Net::HTTP::Get.new(uri)
@@ -25,7 +23,7 @@ module Weather
         atmosphere = weather_data['atmosphere']
         today = weather_data['item']['condition']
 
-        today_data = { date: DateTime.parse(today['date']).strftime('%e %B %Y, %H:%M'),
+        today_data = { date: Time.parse(today['date']).strftime('%e %B %Y, %H:%M'),
                        temperature: today['temp'] + + '°' + units['temperature'],
                        wind: wind['speed'] + ' ' + units['speed'],
                        humidity: atmosphere['humidity'] + '%',
@@ -37,9 +35,12 @@ module Weather
           f['low'] = f['low'] + '°' + units['temperature']
           f
         end
+        PreviousCheck.create(location_id: @location.id,
+                             wind: today_data[:wind],
+                             temperature: today_data[:temperature],
+                             humidity: today_data[:humidity])
 
         { today: today_data, forecast: forecast_data }
-
       end
     end
   end

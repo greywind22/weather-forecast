@@ -9,6 +9,5 @@ class WeatherController < ApplicationController
     result = Weather::Services::RetrieveData.new(@location).call
     @today = result[:today]
     @forecast = result[:forecast]
-    puts @today
   end
 end

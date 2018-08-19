@@ -1,12 +1,12 @@
-<div>
-  <%= form_tag(forecast_path, method: :post, remote: true) do %> 
+<div style='margin: 10px'>
+  <%= form_tag(forecast_path, method: :post, remote: true, style: 'margin: 10px') do %> 
     <label> Please select the city</label>
     <br/>
     <br/>
     <%= select_tag "location_id", options_for_select(@locations.pluck(:name, :id)) %>
     <br/>
     <br/>
-    <%= submit_tag 'Get Forecast' %>
+    <%= submit_tag 'Get Forecast', class: 'forecast-button' %>
   <% end %>
 
   <div id='weather-today'> </div>
