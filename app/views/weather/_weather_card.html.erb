@@ -1,2 +1,17 @@
 
-<p> Placeholder -- Data goes here </p>
+<%- if type == 'today' %>
+  <div class='weather-card <%= type %>'>
+    <p> Placeholder -- Data goes here </p>
+    <% data.each do |d| %>
+      <%= d %>
+    <% end %>   
+  </div>
+<% end -%>
+<%- if type == 'forecast' %>
+  <div class='weather-card  <%= type %>'>
+    <p> Placeholder -- Data goes here  2</p>
+    <% data.each do |d| %>
+      <%= d %>
+    <% end %> 
+  </div>
+<% end -%>
