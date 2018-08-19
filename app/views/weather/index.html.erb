@@ -1,7 +1,11 @@
 <div>
+  <%= form_tag(forecast_path, method: :post, remote: true) do %> 
     <label> Please select the city</label>
     <br/>
     <br/>
     <%= select_tag "location_id", options_for_select(@locations.pluck(:name, :id)) %>
     <br/>
+    <br/>
+    <%= submit_tag 'Get Forecast' %>
+  <% end %>
 </div>
