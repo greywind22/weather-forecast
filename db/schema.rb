@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180819013305) do
+ActiveRecord::Schema.define(version: 20180819065950) do
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.text "url"
+  end
+
+  create_table "previous_checks", force: :cascade do |t|
+    t.integer "location_id"
+    t.string "wind"
+    t.string "temperature"
+    t.string "humidity"
+    t.datetime "created_at"
   end
 
 end
